@@ -1,0 +1,211 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ @font-face {
+    font-family: 'Digitalbold';
+    src: url('../fonts/ds-digib-webfont.woff2') format('woff2'),
+         url('../fonts/ds-digib-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Autobus';
+    src: local('AutobusBold'),
+        url('../fonts/AutobusBold.woff2') format('woff2'),
+        url('../fonts/AutobusBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, rgba(100, 100, 100, 0.2) 0%, rgba(255, 255, 255, 0.5) 40%, #ffffff 100%);
+    background-repeat: no-repeat;
+}
+
+.clock-container{
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.clock {
+    background: #e0e0e0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.6em solid #252525;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
+}
+
+.clock .dial-lines {
+    top: 0.5%;
+    left: 48.5%;
+    position: absolute;
+    z-index: 2;
+    width: 3%;
+    height: 3%;
+    background: #d60000;
+    border-radius: 50%;
+    transform-origin: 50% 1650%;
+}
+
+.clock .dial-lines:nth-child(5n+1) {
+    top: 0.5%;
+    border-radius: 0;
+    z-index: 2;
+    width: 2.4%;
+    height: 7.5%;
+    background: #630063;
+    transform-origin: 50% 662%;
+    border-radius: 15em 15em 15em 15em;
+}
+
+.clock .hands .hour-hand{
+    position: absolute;
+    z-index: 5;
+    width: 2%;
+    height: 30%;
+    background: #630063;
+    top: 20%;
+    left: 49%;
+    transform-origin: center bottom;
+    border-radius: 15em 15em 0 0;
+    transition: all 1s;
+}
+    
+.clock .hands .minute-hand{
+    position: absolute;
+    z-index: 6;
+    width: 1.5%;
+    height: 40%;
+    background: #d60000;
+    top: 10%;
+    left: 49%;
+    transform-origin: center bottom;
+    border-radius: 15em 15em 0 0;
+    transition: all 2s;
+}
+
+.clock .counter-box{
+    width: 30%;
+    position: absolute;
+    top: 27%;
+    text-align: center;
+    color: #630063;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.clock .dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: radial-gradient(ellipse 20px 15px at 50% 0, #f54f4f 40%, #d60000 80%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 10;
+}
+
+.clock .hours span{
+    display: inline-block;
+    position: absolute;
+    color: #222222;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 4;
+}
+
+.clock .hours .hour12 {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.clock .hours .hour3 {
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+.clock .hours .hour6 {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.clock .hours .hour9 {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+.game-container{
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-container .info-box-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.game-container .info-box-container h1{
+    font-family: 'Autobus';
+    color: #440044;
+    letter-spacing: 4px;
+}
+
+.game-container .button{
+    width: 120px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid black;
+    font-family: 'Share Tech Mono', monospace;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    background: radial-gradient(ellipse at center,  #072027  0%, #1a1a1a 70%);
+    outline: none;
+    transition: all 0.3s;
+    border: 3px solid #630063;
+}
+
+.game-container .button:hover{
+    color: yellow;
+}
+
+.game-container .startBtn{
+    width: 250px;
+    height: 40px;
+    border-radius: 10px 10px 10px 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    border: none;
+    margin-top: 20px;
+    color: white;
+    background: #d60000;
+    outline: none;
+    transition: all 0.5s;
+    border: 2px solid #630063;
+}
+
+.game-container .startBtn:hover{
+    background: #630063;
+    border-color: #222222;
+}
