@@ -4,12 +4,20 @@ import DialLines from '../js/diallines.jsx';
 import MinutesAndHoursHands from '../js/hmHands.jsx';
 import GameContainer from '../js/gamecontainer.jsx';
 import '../css/styles.css';
+import '../css/responsive.css';
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
 
-    class Clock extends React.Component{
+    class Clock extends React.Component {
+		strings = {
+			startCaption: 'WHAT TIME IS IT ?',
+			goodAnswer: 'YEAH, GOOD ANSWER !',
+			wrongAnswer: 'WRONG ANSWER !',
+			timeIsUp: 'TIME IS UP !'
+		}
+
         state = {
-            infoBox: 'Która godzinka misiaczku ?',
+            infoBox: this.strings.startCaption,
             buttonsArr: [],
             hour: 0,
             minute: 0,
@@ -20,17 +28,17 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
         click = (event) => {
-            if(event.target.id == this.state.result){
+            if(event.target.id == this.state.result) {
                 clearInterval(this.id);
                 this.setState({
-                    infoBox: 'Huraaaa!',
+                    infoBox: this.strings.goodAnswer,
                     disabled: true,
                 })
             }
-            else if(event.target.id != this.state.result){
+            else if(event.target.id != this.state.result) {
                 clearInterval(this.id);
                 this.setState({
-                    infoBox: 'Buuuuuuuu :(',
+                    infoBox: this.strings.wrongAnswer,
                     disabled: true,
                 })
             }
@@ -40,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function(){
             this.generator();
             this.counter();
             this.setState({
-                infoBox: 'Która godzinka misiaczku ?',
+                infoBox: this.strings.startCaption,
                 disabled: false,
             })
         }
@@ -67,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function(){
             let tempArr = [];
             tempArr.push(this.state.result);
                  
-            let randomResults = (arr) =>{
+            let randomResults = (arr) => {
                 let i=0;
-                while(arr.length < 4 && i<1000){
+                while(arr.length < 4 && i<1000) {
                     let randomResult = `${randomHour()}:${randomMinute()}`;
                     
                     if(arr.indexOf(randomResult) == -1){
@@ -91,11 +99,11 @@ document.addEventListener('DOMContentLoaded', function(){
             this.state.buttonsArr = tempArr;
         }
 
-        componentWillMount(){
+        componentWillMount() {
             this.generator();
         }
         
-        render(){
+        render() {
             let buttons = this.state.buttonsArr.map( (el, i) => {
                 return(  
                     <button 
@@ -111,17 +119,18 @@ document.addEventListener('DOMContentLoaded', function(){
 
             let startButton = (
                     <button
-                        className={"startBtn"} 
+                        className={"start-btn"} 
                         onClick={this.clickStart.bind(this)} 
                         style={{display: this.state.disabled ? 'block' : 'none' }} 
                     >start</button>
                 )
 
-            return( 
-                <div>               
+            return ( 
+                <div className="main-container">
+					<h1 className="info-caption">rotate your device to portrait position</h1>               
                     <div className="clock-container">
                         <div className="clock">
-                            <div className={"counter-box"}><span>00:{this.state.counter < 10 ? '0'+this.state.counter : this.state.counter}</span></div>
+                            <div className={"counter-box"}><span>00:{this.state.counter < 10 ? '0' + this.state.counter : this.state.counter}</span></div>
                             <div className={"dot"}></div>
                             <div className="hands">
                                 <MinutesAndHoursHands 
@@ -131,10 +140,10 @@ document.addEventListener('DOMContentLoaded', function(){
                                 />
                             </div>
                             <div className="hours">
-                                <span className="hour3">3</span>
-                                <span className="hour6">6</span>
-                                <span className="hour9">9</span>
-                                <span className="hour12">12</span>
+                                <span className="hour-3">3</span>
+                                <span className="hour-6">6</span>
+                                <span className="hour-9">9</span>
+                                <span className="hour-12">12</span>
                             </div>
                             <DialLines />
                         </div>
@@ -149,22 +158,22 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
         counter() {
-            if(this.id > 0){
+            if(this.id > 0) {
                 clearInterval(this.id)
             }
 
             this.setState({
-                counter: this.props.start,
+                counter: this.props.start
             })
 
             this.id = setInterval(() => {
                 this.setState({
-                    counter: this.state.counter - 1,
+                    counter: this.state.counter - 1
                 }, () => {
-                    if(this.state.counter === 0){
+                    if(this.state.counter === 0) {
                         clearInterval(this.id);
                         this.setState({
-                            infoBox: 'Czas minął !',
+                            infoBox: this.strings.timeIsUp,
                             disabled: true,
                         })
                     }
@@ -181,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
-    const App = () => <Clock start={10} />
+    const App = () => <Clock start={5} />
 
     ReactDOM.render(
         <App />,

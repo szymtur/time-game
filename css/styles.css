@@ -1,15 +1,7 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
- @font-face {
-    font-family: 'Digitalbold';
-    src: url('../fonts/ds-digib-webfont.woff2') format('woff2'),
-         url('../fonts/ds-digib-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 }
 
 @font-face {
@@ -21,31 +13,45 @@
     font-style: normal;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
+body {
     background: linear-gradient(to bottom, rgba(100, 100, 100, 0.2) 0%, rgba(255, 255, 255, 0.5) 40%, #ffffff 100%);
     background-repeat: no-repeat;
 }
 
-.clock-container{
-    width: 300px;
-    height: 300px;
-    margin: 20px auto;
+.main-container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
 }
 
-.clock {
-    background: #e0e0e0;
+.info-caption {
+	font-family: 'Autobus', sans-serif;
+	text-transform: uppercase;
+	display: none;
+}
+
+.clock-container {
+    width: 50vh;
+	height: 50vh;
+	min-width: 300px;
+	min-height: 300px;
+	margin: 1em auto;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.clock-container .clock {
+    position: relative;
     width: 100%;
     height: 100%;
+	background: #e0e0e0;
     border-radius: 50%;
-    border: 0.6em solid #252525;
-    position: relative;
-    display: flex;
-    justify-content: center;
+    border: 0.5em solid #252525;
     box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
 }
 
-.clock .dial-lines {
+.clock-container .clock .dial-lines {
     top: 0.5%;
     left: 48.5%;
     position: absolute;
@@ -57,7 +63,7 @@ body{
     transform-origin: 50% 1650%;
 }
 
-.clock .dial-lines:nth-child(5n+1) {
+.clock-container .clock .dial-lines:nth-child(5n+1) {
     top: 0.5%;
     border-radius: 0;
     z-index: 2;
@@ -68,7 +74,7 @@ body{
     border-radius: 15em 15em 15em 15em;
 }
 
-.clock .hands .hour-hand{
+.clock-container .clock .hands .hour-hand {
     position: absolute;
     z-index: 5;
     width: 2%;
@@ -81,7 +87,7 @@ body{
     transition: all 1s;
 }
     
-.clock .hands .minute-hand{
+.clock-container .clock .hands .minute-hand {
     position: absolute;
     z-index: 6;
     width: 1.5%;
@@ -94,19 +100,19 @@ body{
     transition: all 2s;
 }
 
-.clock .counter-box{
-    width: 30%;
+.clock-container .clock .counter-box {
     position: absolute;
-    top: 27%;
-    text-align: center;
-    color: #630063;
-    font-size: 1.5rem;
-    font-weight: 500;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	color: #630063;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
-.clock .dot {
-    width: 1rem;
-    height: 1rem;
+.clock-container .clock .dot {
+    width: 1em;
+    height: 1em;
     border-radius: 50%;
     background: radial-gradient(ellipse 20px 15px at 50% 0, #f54f4f 40%, #d60000 80%);
     top: 50%;
@@ -116,96 +122,105 @@ body{
     z-index: 10;
 }
 
-.clock .hours span{
+.clock-container .clock .hours span {
     display: inline-block;
     position: absolute;
     color: #222222;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 700;
     z-index: 4;
 }
 
-.clock .hours .hour12 {
+.clock-container .clock .hours .hour-12 {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.clock .hours .hour3 {
+.clock-container .clock .hours .hour-3 {
     top: 50%;
     right: 10%;
     transform: translateY(-50%);
 }
 
-.clock .hours .hour6 {
+.clock-container .clock .hours .hour-6 {
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.clock .hours .hour9 {
+.clock-container .clock .hours .hour-9 {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
 }
 
-.game-container{
-    width: 600px;
-    margin: 20px auto;
+.game-container {
     padding: 10px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
+	align-items: center;
 }
 
-.game-container .info-box-container{
-    margin-top: 10px;
-    margin-bottom: 10px;
+.game-container .info-box-container {
+    margin: 0.5em 0 0.5em 0;
+	overflow: hidden;
 }
 
-.game-container .info-box-container h1{
-    font-family: 'Autobus';
-    color: #440044;
+.game-container .info-box-container h1 {
+	font-family: 'Autobus', sans-serif;
+	font-size: 2.5em;
     letter-spacing: 4px;
+	color: #440044;
 }
 
-.game-container .button{
+.game-container .answer-buttons {
+	text-align: center;
+}
+
+.game-container .answer-buttons .answer-row {
+	display: inline-block;
+}
+
+.game-container .answer-buttons .answer-row .button {
     width: 120px;
     height: 50px;
     margin: 5px;
-    border-radius: 5px 5px 5px 5px;
-    border: 2px solid black;
     font-family: 'Share Tech Mono', monospace;
-    color: white;
     font-size: 2rem;
+	color: #ffffff;
     text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
     background: radial-gradient(ellipse at center,  #072027  0%, #1a1a1a 70%);
+    border-radius: 5px;
+	border: 2px solid #630063;
     outline: none;
-    transition: all 0.3s;
-    border: 3px solid #630063;
+	transition: all 0.3s;
 }
 
-.game-container .button:hover{
-    color: yellow;
+.game-container .answer-buttons .answer-row .button:hover {
+    color: #ffff00;
 }
 
-.game-container .startBtn{
+.game-container .main-button {
+    margin: 20px 0 10px 0;
+	height: 50px;
+}
+
+.game-container .main-button .start-btn {
     width: 250px;
-    height: 40px;
-    border-radius: 10px 10px 10px 10px;
+    height: 50px;
+    border-radius: 5px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5rem;
     border: none;
-    margin-top: 20px;
-    color: white;
+    color: #ffffff;
     background: #d60000;
     outline: none;
     transition: all 0.5s;
     border: 2px solid #630063;
 }
 
-.game-container .startBtn:hover{
+.game-container .main-button .start-btn:hover {
     background: #630063;
     border-color: #222222;
 }

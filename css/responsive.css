@@ -1,0 +1,35 @@
+@media (max-aspect-ratio: 1/1) {
+	.clock-container {
+		width: 40vh;
+		height: 40vh;
+		min-width: unset;
+		min-height: unset;
+	}
+
+	@media(min-width: 375px) and (max-width: 415px) {
+		.clock-container {
+			width: 35vh;
+			height: 35vh;
+		}
+	}
+
+	.clock-container .clock {
+		border-width: 0.5em;
+	}
+
+	.game-container .info-box-container h1 {
+		font-size: 2em;
+	}
+}
+
+@media (min-aspect-ratio: 1/1) and (max-height: 549px) {
+	.clock-container,
+	.game-container {
+		display: none;
+	}
+
+	.info-caption {
+		display: flex;
+		justify-content: center;
+	}
+}
