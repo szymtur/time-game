@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DialLines from '../js/diallines.jsx';
-import MinutesAndHoursHands from '../js/hmHands.jsx';
-import GameContainer from '../js/gamecontainer.jsx';
+import ClockContainer from '../js/clockContainer.jsx';
+import GameContainer from '../js/gameContainer.jsx';
+import InfoCaption from '../js/infoCaption.jsx';
 import '../css/styles.css';
 import '../css/responsive.css';
 
@@ -97,66 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
             randomResults(tempArr);
             shuffle(tempArr);  
             this.state.buttonsArr = tempArr;
-        }
-
-        componentWillMount() {
-            this.generator();
-        }
-        
-        render() {
-            let buttons = this.state.buttonsArr.map( (el, i) => {
-                return(  
-                    <button 
-                        className={"button"} 
-                        onClick={this.click} 
-                        disabled={this.state.disabled}
-                        style={{color: this.state.disabled && 'red' }} 
-                        key={i} 
-                        id={el}> {el}
-                    </button>
-                )
-            });
-
-            let startButton = (
-                    <button
-                        className={"start-btn"} 
-                        onClick={this.clickStart.bind(this)} 
-                        style={{display: this.state.disabled ? 'block' : 'none' }} 
-                    >start</button>
-                )
-
-            return ( 
-                <div className="main-container">
-					<h1 className="info-caption">rotate your device to portrait position</h1>               
-                    <div className="clock-container">
-                        <div className="clock">
-                            <div className={"counter-box"}><span>00:{this.state.counter < 10 ? '0' + this.state.counter : this.state.counter}</span></div>
-                            <div className={"dot"}></div>
-                            <div className="hands">
-                                <MinutesAndHoursHands 
-                                    hour={this.state.hour} 
-                                    minute={this.state.minute} 
-                                    second={this.state.second} 
-                                />
-                            </div>
-                            <div className="hours">
-                                <span className="hour-3">3</span>
-                                <span className="hour-6">6</span>
-                                <span className="hour-9">9</span>
-                                <span className="hour-12">12</span>
-                            </div>
-                            <DialLines />
-                        </div>
-                    </div>
-                    <GameContainer
-                        infoBox={this.state.infoBox} 
-                        buttons={buttons} 
-                        startButton={startButton}
-                    />
-                </div>
-            )
-        }
-
+		}
+		
         counter() {
             if(this.id > 0) {
                 clearInterval(this.id)
@@ -181,19 +123,62 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         }
 
-        componentDidMount() {
+        componentWillMount() {
+            this.generator();
+		}
+		
+		componentDidMount() {
             this.counter();
         }   
 
         componentWillUnmount() {
             clearInterval(this.id);
         }
+        
+        render() {
+            let buttons = this.state.buttonsArr.map( (el, i) => {
+                return (  
+                    <button 
+                        className={"button"} 
+                        onClick={this.click} 
+                        disabled={this.state.disabled}
+                        style={{color: this.state.disabled && 'red' }} 
+                        key={i} 
+                        id={el}> {el}
+                    </button>
+                )
+            });
+
+            let startButton = (
+				<button
+					className={"start-btn"} 
+					onClick={this.clickStart.bind(this)} 
+					style={{display: this.state.disabled ? 'block' : 'none' }} 
+				>start</button>
+            )
+
+            return ( 
+                <div className="main-container">
+					<InfoCaption />
+ 					<ClockContainer 
+						hour={this.state.hour} 
+						minute={this.state.minute} 
+						second={this.state.second}
+						counter={this.state.counter} 						
+					/>
+                    <GameContainer
+                        infoBox={this.state.infoBox} 
+                        buttons={buttons} 
+                        startButton={startButton}
+                    />
+                </div>
+            )
+        }
     }
 
     const App = () => <Clock start={5} />
 
     ReactDOM.render(
-        <App />,
-        document.getElementById('app')
+        <App />, document.getElementById('app')
     );
 });
