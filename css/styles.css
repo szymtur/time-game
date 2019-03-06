@@ -182,45 +182,42 @@ body {
 	display: inline-block;
 }
 
-.game-container .answer-buttons .answer-row .button {
-    width: 120px;
-    height: 50px;
-    margin: 5px;
+.game-container .answer-buttons .answer-row .button,
+.game-container .start-button .button {
     font-family: 'Share Tech Mono', monospace;
     font-size: 2rem;
 	color: #ffffff;
-    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
-    background: radial-gradient(ellipse at center,  #072027  0%, #1a1a1a 70%);
-    border-radius: 5px;
+	height: 50px;
+	padding-top: 2px;
+	border-radius: 5px;
 	border: 2px solid #630063;
     outline: none;
 	transition: all 0.3s;
+	text-transform: uppercase;
+	text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+}
+
+.game-container .answer-buttons .answer-row .button {
+    width: 120px;
+    margin: 5px;
+	background: #1a1a1a;
 }
 
 .game-container .answer-buttons .answer-row .button:hover {
     color: #ffff00;
 }
 
-.game-container .main-button {
+.game-container .start-button {
     margin: 20px 0 10px 0;
 	height: 50px;
 }
 
-.game-container .main-button .start-btn {
+.game-container .start-button .button {
     width: 250px;
-    height: 50px;
-    border-radius: 5px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.5rem;
-    border: none;
-    color: #ffffff;
     background: #d60000;
-    outline: none;
-    transition: all 0.5s;
-    border: 2px solid #630063;
 }
 
-.game-container .main-button .start-btn:hover {
-    background: #630063;
-    border-color: #222222;
+.game-container .start-button .button:hover {
+	color: #ffff00;
+	background: #1a1a1a;
 }

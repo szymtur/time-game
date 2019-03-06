@@ -1,5 +1,5 @@
 import React from 'react';
-import isMobile from "../js/mobile.jsx";
+import isMobile from "../js/isMobile.jsx";
 
 class InfoCaption extends React.Component {
     render(){

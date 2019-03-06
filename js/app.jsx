@@ -17,25 +17,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
         state = {
-            infoBox: this.strings.startCaption,
-            buttonsArr: [],
-            hour: 0,
-            minute: 0,
-            second: 0,
-            result: '',
-            disabled: false,
-            counter: this.props.start,
+            hour: null,
+            minute: null,
+            second: null,
+            goodAnswer: null,
+			disabled: false,
+			answerButtonsArray: [],
+			counter: this.props.counterValue,
+			infoBox: this.strings.startCaption
         }
 
-        click = (event) => {
-            if(event.target.id == this.state.result) {
+        answerClick = (event) => {
+            if(event.target.id == this.state.goodAnswer) {
                 clearInterval(this.id);
                 this.setState({
                     infoBox: this.strings.goodAnswer,
                     disabled: true,
                 })
             }
-            else if(event.target.id != this.state.result) {
+            else if(event.target.id != this.state.goodAnswer) {
                 clearInterval(this.id);
                 this.setState({
                     infoBox: this.strings.wrongAnswer,
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        clickStart = () => {
+        startClick = () => {
             this.generator();
             this.counter();
             this.setState({
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             this.state.hour = randomHour();
             this.state.minute = randomMinute();
-            this.state.result = `${this.state.hour}:${this.state.minute}`
+            this.state.goodAnswer = `${this.state.hour}:${this.state.minute}`
 
-            let tempArr = [];
-            tempArr.push(this.state.result);
+            let tempArray = [];
+            tempArray.push(this.state.goodAnswer);
                  
             let randomResults = (arr) => {
                 let i=0;
@@ -94,9 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
        
-            randomResults(tempArr);
-            shuffle(tempArr);  
-            this.state.buttonsArr = tempArr;
+            randomResults(tempArray);
+            shuffle(tempArray);  
+            this.state.answerButtonsArray = tempArray;
 		}
 		
         counter() {
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             this.setState({
-                counter: this.props.start
-            })
+                counter: this.props.counterValue
+            });
 
             this.id = setInterval(() => {
                 this.setState({
@@ -136,27 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         render() {
-            let buttons = this.state.buttonsArr.map( (el, i) => {
-                return (  
-                    <button 
-                        className={"button"} 
-                        onClick={this.click} 
-                        disabled={this.state.disabled}
-                        style={{color: this.state.disabled && 'red' }} 
-                        key={i} 
-                        id={el}> {el}
-                    </button>
-                )
-            });
-
-            let startButton = (
-				<button
-					className={"start-btn"} 
-					onClick={this.clickStart.bind(this)} 
-					style={{display: this.state.disabled ? 'block' : 'none' }} 
-				>start</button>
-            )
-
             return ( 
                 <div className="main-container">
 					<InfoCaption />
@@ -167,18 +146,18 @@ document.addEventListener('DOMContentLoaded', function() {
 						counter={this.state.counter} 						
 					/>
                     <GameContainer
-                        infoBox={this.state.infoBox} 
-                        buttons={buttons} 
-                        startButton={startButton}
+						infoBox={this.state.infoBox}
+						disabled={this.state.disabled}
+                        startClick={this.startClick}
+						answerClick={this.answerClick}
+                        answerButtonsArray={this.state.answerButtonsArray}
                     />
                 </div>
             )
         }
     }
 
-    const App = () => <Clock start={5} />
+    const App = () => <Clock counterValue={30} />
 
-    ReactDOM.render(
-        <App />, document.getElementById('app')
-    );
+    ReactDOM.render( <App />, document.getElementById('app') );
 });

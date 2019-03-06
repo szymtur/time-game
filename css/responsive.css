@@ -6,19 +6,26 @@
 		min-height: unset;
 	}
 
-	@media(min-width: 375px) and (max-width: 415px) {
-		.clock-container {
-			width: 35vh;
-			height: 35vh;
-		}
-	}
-
 	.clock-container .clock {
 		border-width: 0.5em;
 	}
-
+	
 	.game-container .info-box-container h1 {
-		font-size: 2em;
+		font-size: 2.2em;
+		letter-spacing: 2px;
+	}
+
+	.game-container .answer-buttons .answer-row .button,
+	.game-container .start-button .button {
+		height: 45px;
+		font-size: 1.8em;
+	}
+}
+
+@media (max-aspect-ratio: 1/1) and (min-width: 375px) and (max-width: 415px) {
+	.clock-container {
+		width: 35vh;
+		height: 35vh;
 	}
 }
 
