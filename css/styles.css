@@ -52,26 +52,27 @@ body {
 }
 
 .clock-container .clock .dial-dots .dial-dot {
-    top: 0.5%;
-    left: 48.5%;
+    top: 0.75%;
+    left: 49%;
     position: absolute;
     z-index: 2;
     width: 3%;
     height: 3%;
     background: #d60000;
     border-radius: 50%;
-    transform-origin: 50% 1650%;
+    transform-origin: 40% 1640%;
 }
 
 .clock-container .clock .dial-dots .dial-dot:nth-child(5n+1) {
-    top: 0.5%;
+	top: 0.75%;
+	left: 49%;
     border-radius: 0;
     z-index: 2;
     width: 2.4%;
     height: 7.5%;
     background: #630063;
-    transform-origin: 50% 662%;
-    border-radius: 15em 15em 15em 15em;
+	border-radius: 15em;
+    transform-origin: 50% 655%;
 }
 
 .clock-container .clock .clock-hands .hour-hand {
@@ -169,7 +170,7 @@ body {
 
 .game-container .info-box-container h1 {
 	font-family: 'Autobus', sans-serif;
-	font-size: 2.5em;
+	font-size: 2.4em;
     letter-spacing: 4px;
 	color: #440044;
 }
