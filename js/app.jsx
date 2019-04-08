@@ -9,22 +9,22 @@ import '../css/responsive.css';
 document.addEventListener('DOMContentLoaded', function() {
 
     class Clock extends React.Component {
-		strings = {
-			startCaption: 'WHAT TIME IS IT ?',
-			goodAnswer: 'YEAH, GOOD ANSWER !',
-			wrongAnswer: 'WRONG ANSWER !',
-			timeIsUp: 'TIME IS UP !'
-		}
+        strings = {
+            startCaption: 'WHAT TIME IS IT ?',
+            goodAnswer: 'YEAH, GOOD ANSWER !',
+            wrongAnswer: 'WRONG ANSWER !',
+            timeIsUp: 'TIME IS UP !'
+        }
 
         state = {
             hour: null,
             minute: null,
             second: null,
             goodAnswer: null,
-			disabled: false,
-			answerButtonsArray: [],
-			counter: this.props.counterValue,
-			infoBox: this.strings.startCaption
+            disabled: false,
+            answerButtonsArray: [],
+            counter: this.props.counterValue,
+            infoBox: this.strings.startCaption
         }
 
         answerClick = (event) => {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 randomNumber.toString().length == 1 ? hour = `0${randomNumber}` : hour =`${randomNumber}`;
                 return hour;
             }
-            
+
             let randomMinute = () => {
                 const randomNumber = Math.floor(Math.random() * 59);
                 let minute = 0;
@@ -70,17 +70,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             this.state.hour = randomHour();
             this.state.minute = randomMinute();
-            this.state.goodAnswer = `${this.state.hour}:${this.state.minute}`
+            this.state.goodAnswer = `${this.state.hour}:${this.state.minute}`;
 
             let tempArray = [];
             tempArray.push(this.state.goodAnswer);
-                 
+
             let randomResults = (arr) => {
                 let i=0;
                 while(arr.length < 4 && i<1000) {
                     let randomResult = `${randomHour()}:${randomMinute()}`;
-                    
-                    if(arr.indexOf(randomResult) == -1){
+
+                    if(arr.indexOf(randomResult) == -1) {
                         arr.push(randomResult);
                     }
                     i++;
@@ -93,12 +93,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     [a[i - 1], a[j]] = [a[j], a[i - 1]];
                 }
             }
-       
+
             randomResults(tempArray);
-            shuffle(tempArray);  
+            shuffle(tempArray);
             this.state.answerButtonsArray = tempArray;
-		}
-		
+        }
+
         counter() {
             if(this.id > 0) {
                 clearInterval(this.id)
@@ -125,31 +125,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
         componentWillMount() {
             this.generator();
-		}
-		
-		componentDidMount() {
+        }
+
+        componentDidMount() {
             this.counter();
-        }   
+        }
 
         componentWillUnmount() {
             clearInterval(this.id);
         }
-        
+
         render() {
-            return ( 
+            return (
                 <div className="main-container">
-					<InfoCaption />
- 					<ClockContainer 
-						hour={this.state.hour} 
-						minute={this.state.minute} 
-						second={this.state.second}
-						counter={this.state.counter} 						
-					/>
+                    <InfoCaption />
+                     <ClockContainer
+                        hour={this.state.hour}
+                        minute={this.state.minute}
+                        second={this.state.second}
+                        counter={this.state.counter}
+                    />
                     <GameContainer
-						infoBox={this.state.infoBox}
-						disabled={this.state.disabled}
+                        infoBox={this.state.infoBox}
+                        disabled={this.state.disabled}
                         startClick={this.startClick}
-						answerClick={this.answerClick}
+                        answerClick={this.answerClick}
                         answerButtonsArray={this.state.answerButtonsArray}
                     />
                 </div>
@@ -159,5 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const App = () => <Clock counterValue={30} />
 
-    ReactDOM.render( <App />, document.getElementById('app') );
+    ReactDOM.render (
+        <App />,
+        document.getElementById('app')
+    );
 });

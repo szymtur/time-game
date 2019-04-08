@@ -22,10 +22,10 @@ const isMobile = {
     },
     any: function() {
         return (
-            isMobile.Android() || 
-            isMobile.BlackBerry() || 
-            isMobile.iOS() || 
-            isMobile.Opera() || 
+            isMobile.Android() ||
+            isMobile.BlackBerry() ||
+            isMobile.iOS() ||
+            isMobile.Opera() ||
             isMobile.Windows() ||
             isMobile.webOS() ||
             isMobile.Kindle()

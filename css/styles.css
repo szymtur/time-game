@@ -19,33 +19,33 @@ body {
 }
 
 .main-container {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .info-caption {
-	font-family: 'Autobus', sans-serif;
-	text-transform: uppercase;
-	display: none;
+    font-family: 'Autobus', sans-serif;
+    text-transform: uppercase;
+    display: none;
 }
 
 .clock-container {
     width: 50vh;
-	height: 50vh;
-	min-width: 300px;
-	min-height: 300px;
-	margin: 1em auto;
-	font-family: 'Montserrat', sans-serif;
+    height: 50vh;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 1em auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .clock-container .clock {
     position: relative;
     width: 100%;
     height: 100%;
-	background: #e0e0e0;
+    background: #e0e0e0;
     border-radius: 50%;
     border: 0.5em solid #252525;
     box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
@@ -64,14 +64,14 @@ body {
 }
 
 .clock-container .clock .dial-dots .dial-dot:nth-child(5n+1) {
-	top: 0.75%;
-	left: 49%;
+    top: 0.75%;
+    left: 49%;
     border-radius: 0;
     z-index: 2;
     width: 2.4%;
     height: 7.5%;
     background: #630063;
-	border-radius: 15em;
+    border-radius: 15em;
     transform-origin: 50% 655%;
 }
 
@@ -87,7 +87,7 @@ body {
     border-radius: 15em 15em 0 0;
     transition: all 1s;
 }
-    
+
 .clock-container .clock .clock-hands .minute-hand {
     position: absolute;
     z-index: 6;
@@ -103,10 +103,10 @@ body {
 
 .clock-container .clock .counter-box {
     position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -30%);
-	color: #630063;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    color: #630063;
     font-size: 1.5em;
     font-weight: 600;
 }
@@ -160,48 +160,48 @@ body {
     padding: 10px;
     display: flex;
     flex-direction: column;
-	align-items: center;
+    align-items: center;
 }
 
 .game-container .info-box-container {
     margin: 0.5em 0 0.5em 0;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .game-container .info-box-container h1 {
-	font-family: 'Autobus', sans-serif;
-	font-size: 2.4em;
+    font-family: 'Autobus', sans-serif;
+    font-size: 2.4em;
     letter-spacing: 4px;
-	color: #440044;
+    color: #440044;
 }
 
 .game-container .answer-buttons {
-	text-align: center;
+    text-align: center;
 }
 
 .game-container .answer-buttons .answer-row {
-	display: inline-block;
+    display: inline-block;
 }
 
 .game-container .answer-buttons .answer-row .button,
 .game-container .start-button .button {
     font-family: 'Share Tech Mono', monospace;
     font-size: 2rem;
-	color: #ffffff;
-	height: 50px;
-	padding-top: 2px;
-	border-radius: 5px;
-	border: 2px solid #630063;
+    color: #ffffff;
+    height: 50px;
+    padding-top: 2px;
+    border-radius: 5px;
+    border: 2px solid #630063;
     outline: none;
-	transition: all 0.3s;
-	text-transform: uppercase;
-	text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    transition: all 0.3s;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
 }
 
 .game-container .answer-buttons .answer-row .button {
     width: 120px;
     margin: 5px;
-	background: #1a1a1a;
+    background: #1a1a1a;
 }
 
 .game-container .answer-buttons .answer-row .button:hover {
@@ -210,7 +210,7 @@ body {
 
 .game-container .start-button {
     margin: 20px 0 10px 0;
-	height: 50px;
+    height: 50px;
 }
 
 .game-container .start-button .button {
@@ -219,6 +219,6 @@ body {
 }
 
 .game-container .start-button .button:hover {
-	color: #ffff00;
-	background: #1a1a1a;
+    color: #ffff00;
+    background: #1a1a1a;
 }

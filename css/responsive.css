@@ -1,43 +1,43 @@
 @media (max-aspect-ratio: 1/1) {
-	.clock-container {
-		width: 40vh;
-		height: 40vh;
-		min-width: unset;
-		min-height: unset;
-	}
+    .clock-container {
+        width: 40vh;
+        height: 40vh;
+        min-width: unset;
+        min-height: unset;
+    }
 
-	.clock-container .clock {
-		border-width: 0.5em;
-	}
-	
-	.game-container .info-box-container h1 {
-		font-size: 2.1em;
-		letter-spacing: 2px;
-		padding-top: 2px;
-	}
+    .clock-container .clock {
+        border-width: 0.5em;
+    }
+    
+    .game-container .info-box-container h1 {
+        font-size: 2.1em;
+        letter-spacing: 2px;
+        padding-top: 2px;
+    }
 
-	.game-container .answer-buttons .answer-row .button,
-	.game-container .start-button .button {
-		height: 45px;
-		font-size: 1.8em;
-	}
+    .game-container .answer-buttons .answer-row .button,
+    .game-container .start-button .button {
+        height: 45px;
+        font-size: 1.8em;
+    }
 }
 
 @media (max-aspect-ratio: 1/1) and (min-width: 375px) and (max-width: 415px) {
-	.clock-container {
-		width: 35vh;
-		height: 35vh;
-	}
+    .clock-container {
+        width: 35vh;
+        height: 35vh;
+    }
 }
 
 @media (min-aspect-ratio: 1/1) and (max-height: 549px) {
-	.clock-container,
-	.game-container {
-		display: none;
-	}
+    .clock-container,
+    .game-container {
+        display: none;
+    }
 
-	.info-caption {
-		display: flex;
-		justify-content: center;
-	}
+    .info-caption {
+        display: flex;
+        justify-content: center;
+    }
 }
